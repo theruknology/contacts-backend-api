@@ -9,6 +9,7 @@ const app = express();
 
 app.use(express.json());
 app.use("/api/contacts", require('./routes/contactRoutes.js'));
+app.use("/api/users", require('./routes/userRoutes.js'));
 app.use(errorHandler);
 
 app.listen(port, () => {
@@ -17,7 +18,7 @@ app.listen(port, () => {
 
 // Sample body data
 // {
-//   "name": "Mohammed",
-//   "email": "asdf@asdf.com",
-//   "phone": "123123123"
+  // "name": "Mohammed",
+  // "email": "asdf@asdf.com",
+  // "phone": "123123123"
 // }
