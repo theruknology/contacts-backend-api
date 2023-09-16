@@ -1,24 +1,18 @@
-const env = require("dotenv").config();
 const express = require("express");
-const errorHandler = require("./middleware/errorHandler.js");
-const connectDB = require("./config/dbConnection.js");
-const port = process.env.PORT || 5000;
+const connectDb = require("./config/dbConnection");
+const errorHandler = require("./middleware/errorHandler");
+const dotenv = require("dotenv").config();
 
-connectDB();
+connectDb();
 const app = express();
 
+const port = process.env.PORT || 5000;
+
 app.use(express.json());
-app.use("/api/contacts", require('./routes/contactRoutes.js'));
-app.use("/api/users", require('./routes/userRoutes.js'));
+app.use("/api/contacts", require("./routes/contactRoutes"));
+app.use("/api/users", require("./routes/userRoutes"));
 app.use(errorHandler);
 
 app.listen(port, () => {
-  console.log(`Started server on ${port}`);
+  console.log(`Server running on port ${port}`);
 });
-
-// Sample body data
-// {
-  // "name": "Mohammed",
-  // "email": "asdf@asdf.com",
-  // "phone": "123123123"
-// }
